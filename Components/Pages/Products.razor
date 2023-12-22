@@ -1,0 +1,25 @@
+﻿
+@using Blazored.Toast
+@using Blazored.Toast.Services
+@inject IToastService ToastService
+@inject Catalog Catalog
+
+
+@page "/products"
+
+
+@inherits LayoutComponentBase
+
+<h3>Каталог товаров</h3>
+
+@foreach (var product in Catalog.Products)
+{
+    <div>
+        <h5>@product.Name</h5>
+        <p>@product.Price.ToString("N2")</p>
+        <p>@product.Description</p>
+        <img src="@product.ImageUrl" alt="@product.Name" width="300" height="300" />
+        <button class="btn btn-success" @onclick="@(() => ToastService.ShowInfo (product.Name,"Добавлен в корзину"))">Купить</button>
+    </div>
+}
+

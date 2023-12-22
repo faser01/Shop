@@ -1,0 +1,27 @@
+﻿@inject Catalog catalog
+@page "/product/{id:int}"
+@inherits LayoutComponentBase
+
+<h2>Информация о товаре</h2>
+
+@if (selectedProduct != null)
+{
+    <div>
+        <h3>@selectedProduct.Name</h3>
+        <img src="@selectedProduct.ImageUrl" alt="@selectedProduct.Name" />
+        <p>Цена: @selectedProduct.Price</p>
+        <p>Описание: @selectedProduct.Description</p>
+    </div>
+}
+
+@code {
+
+    [Parameter]
+    public int Id { get; set; }
+    private Product selectedProduct;
+
+    protected override void OnParametersSet()
+    {
+        selectedProduct = catalog.Products.FirstOrDefault(p => p.Id == Id);
+    }
+}

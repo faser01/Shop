@@ -1,0 +1,39 @@
+﻿@inherits LayoutComponentBase
+
+
+@Body
+<div class="content">
+    <RouterView />
+
+    <p>Осталось до окончания акции: <span id="remainingTime">@CalculateRemainingTime()</span></p>
+
+</div>
+
+
+@code {
+  
+
+    private string CalculateRemainingTime()
+    {
+        // Получаем текущую дату и время
+        DateTime currentTime = DateTime.Now;
+
+        // Получаем дату и время окончания акции (предположим, что это 31 декабря 2023 года 23:59:59)
+        DateTime endTime = new DateTime(2023, 12, 31, 23, 59, 59);
+
+        // Рассчитываем оставшееся время до окончания акции
+        TimeSpan remainingTimeSpan = endTime - currentTime;
+
+        // Если оставшееся время положительное, то преобразуем его в формат "дни:часы:минуты:секунды"
+        if (remainingTimeSpan.TotalSeconds > 0)
+        {
+            string remainingTime = $"{remainingTimeSpan.Days} дней: {remainingTimeSpan.Hours} часов: {remainingTimeSpan.Minutes} минут: {remainingTimeSpan.Seconds} секунд";
+            return remainingTime;
+        }
+        else
+        {
+            return "Акция уже закончилась";
+        }
+    }
+
+ }   
