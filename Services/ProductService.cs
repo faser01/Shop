@@ -10,8 +10,8 @@ namespace Shop.Services
             {
                 _products = new List<Product>
             {
-                new Product { Id = 1, Name = "Product 1", Price = 10.99m, Description = "Description 1", ImageUrl = "https://example.com/image1.jpg" },
-                new Product { Id = 2, Name = "Product 2", Price = 20.99m, Description = "Description 2", ImageUrl = "https://example.com/image2.jpg" }
+                new Product { Id = 1, Name = "Product 1", Price = 10.99m, Description = "Description 1", ImageUrl = Path.Combine("images", "image1.jpeg")},
+                new Product { Id = 2, Name = "Product 2", Price = 20.99m, Description = "Description 2", ImageUrl = Path.Combine("images", "image2.jpeg") }
             };
             }
 
