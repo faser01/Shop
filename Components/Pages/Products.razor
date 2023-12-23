@@ -1,4 +1,6 @@
-﻿
+﻿@inject NavigationManager NavigationManager
+@inject ProductService ProductService
+
 @using Blazored.Toast
 @using Blazored.Toast.Services
 @inject IToastService ToastService
@@ -21,5 +23,9 @@
         <img src="@product.ImageUrl" alt="@product.Name" width="300" height="300" />
         <button class="btn btn-success" @onclick="@(() => ToastService.ShowInfo (product.Name,"Добавлен в корзину"))">Купить</button>
     </div>
+
 }
 
+@code{
+
+}

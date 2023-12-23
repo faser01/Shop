@@ -1,0 +1,40 @@
+﻿@page "/cart"
+@inject ProductService ProductService
+
+<h2>Корзина</h2>
+
+@if (cartItems.Count > 0)
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Название</th>
+                <th>Цена</th>
+                <th>Описание</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in cartItems)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Price.ToString("C")</td>
+                    <td>@item.Description</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Корзина пуста</p>
+}
+
+@code {
+    private List<Product> cartItems;
+
+    protected override void OnInitialized()
+    {
+        cartItems = new List<Product>();
+    }
+}

@@ -1,5 +1,10 @@
-﻿@page "/"
+﻿
+@page "/"
+@using Shop.Services
 @inherits LayoutComponentBase
+@inject NavigationManager NavigationManager
+@inject ProductService ProductService
+@inject IToastService ToastService
 
 
 <h3>Добро пожаловать в интернет магазин ShopBlazor</h3>

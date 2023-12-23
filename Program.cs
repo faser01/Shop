@@ -1,12 +1,14 @@
 using Blazored.Toast;
 using Shop.Components;
 using Shop.Models;
+using Shop.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents();
 builder.Services.AddBlazoredToast();
+builder.Services.AddSingleton<ProductService>();
 
 builder.Services.AddScoped<Catalog>();
 
